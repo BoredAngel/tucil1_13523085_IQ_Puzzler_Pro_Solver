@@ -31,7 +31,14 @@ public class Input {
                 // p is the number of pieces
                 if (i == 0) {
                     String line = s.nextLine();
-                    int[] values = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray();
+                    String[] vals = line.split(" ");
+                    int[] values;
+                    if (vals.length != 3) throw new IllegalArgumentException("Error: Invalid N, M, and P Value");
+                    try {
+                        values = Arrays.stream(vals).mapToInt(Integer::parseInt).toArray();
+                    } catch (Exception e) {
+                        throw new IllegalArgumentException("Error: Invalid N, M, and P Value");
+                    }
                     this.n = values[0];    
                     this.m = values[1];    
                     this.p = values[2];   

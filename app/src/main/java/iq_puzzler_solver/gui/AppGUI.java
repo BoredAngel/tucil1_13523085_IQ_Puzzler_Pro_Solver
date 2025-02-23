@@ -74,7 +74,6 @@ public class AppGUI extends Application{
         HBox buttonBox = new HBox(10, SaveTxtBtn, SaveImgBtn);
         buttonBox.setAlignment(Pos.CENTER);
 
-
         drawBoard();
 
         VBox root = new VBox(10, titleLabel, this.canvas, loadButton, this.uploadLabel, buttonBox);
@@ -183,5 +182,3 @@ public class AppGUI extends Application{
         launch(args);
     }
 }
-
-// imma be honest the GUI i kinda half-assed it with Chat-GPT help (sorry about that)

@@ -41,3 +41,9 @@ application {
     // Define the main class for the application.
     mainClass = "iq_puzzler_solver.Main"
 }
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "iq_puzzler_solver.Main"
+    }
+}
