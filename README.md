@@ -16,7 +16,7 @@ This project is an assignment for the **IF2211 Strategi Algoritma** course. The 
 ---
 
 ## 📖 About
-![puzzle](https://raw.githubusercontent.com/BoredAngel/tucil1_13523085_IQ_Puzzler_Pro_Solver/assets/puzzle.jpg)
+![puzzle](https://github.com/BoredAngel/tucil1_13523085_IQ_Puzzler_Pro_Solver/blob/main/assets/puzzle.jpg?raw=true)
 **IQ Puzzler Pro** is a puzzle game produced by the company Smart Games. The objective of the game is for the player to fill the board using the given puzzle pieces without any overlap or empty spaces. This project aim to solve this puzzle via the bruteforce method, more spesifically an exhaustive search.
 
 ### ✨ Features:
