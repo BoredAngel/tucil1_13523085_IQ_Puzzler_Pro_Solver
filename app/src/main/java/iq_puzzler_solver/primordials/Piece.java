@@ -2,7 +2,7 @@ package iq_puzzler_solver.primordials;
 
 public class Piece {
     int n, m;
-    char symbol;
+    public char symbol;
     boolean[][] shape;
     static int numOfPieces = 0;
 

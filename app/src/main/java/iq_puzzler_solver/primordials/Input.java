@@ -14,6 +14,7 @@ public class Input {
     public int n, m, p;
     public String mode;
     public List<Piece> pieces = new ArrayList<>();
+    private int total_piece_size = 0;
 
     // parse input from a txt file and save it to this class
     public Input(String path) {
@@ -90,6 +91,17 @@ public class Input {
             // parse last piece
             parsePiece(cur_piece_shape, cur_piece_symbol);
 
+            // check if total piece size is equal to board size
+            if (this.n * this.m != this.total_piece_size) {
+                throw new IllegalArgumentException("Error: Total piece size is not equal to board size");
+            } 
+
+            // check if number of piece is equal to the given value
+            if (this.pieces.size() != this.p) {
+                throw new IllegalArgumentException("Error: Number of piece is not equal to the given value P");
+            } 
+
+
             s.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -107,6 +119,9 @@ public class Input {
             m = (m < s.length()) ? s.length() : m;
         }
 
+        // if piece is bigger than board
+        if (n > this.n || m > this.m) throw new IllegalArgumentException("Error: Invalid piece shape. Piece is bigger than the board");
+
         shape = new boolean[n][m];
         int startX = -1, startY = -1;
         
@@ -115,6 +130,7 @@ public class Input {
             for (int j = 0; j < m; j++) {
                 if (raw_shape.get(i).length() > j && raw_shape.get(i).charAt(j) != ' ') {
                     shape[i][j] = true;
+                    this.total_piece_size++;
                     startX = i;
                     startY = j;
                 }
@@ -128,7 +144,7 @@ public class Input {
         Queue<Point> q = new LinkedList<>();
         q.add(new Point(startX, startY));
 
-        while (!q.isEmpty()) {
+        while (!q.isEmpty()) {            
             Point cur_point = q.poll();
             int x = cur_point.x;
             int y = cur_point.y;

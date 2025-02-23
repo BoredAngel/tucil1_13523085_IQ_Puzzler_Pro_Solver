@@ -1,9 +1,7 @@
-4 4 4
+4 4 3
 DEFAULT
 AAAA
-AA
- AA
-AA
- AA
-AA
- AA
+BB
+ BB
+CC
+ CC
