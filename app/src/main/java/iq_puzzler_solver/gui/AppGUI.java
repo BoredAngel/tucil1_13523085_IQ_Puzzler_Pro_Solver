@@ -129,7 +129,7 @@ public class AppGUI extends Application{
                 this.width.set(board.m);
                 drawBoard();
                 
-            } catch (IllegalArgumentException e) {
+            } catch (Exception e) {
                 this.uploadLabel.setText(e.getMessage());
                 SaveTxtBtn.setVisible(false);
                 SaveImgBtn.setVisible(false);

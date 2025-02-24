@@ -2,7 +2,6 @@ package iq_puzzler_solver.primordials;
 
 import java.awt.Point;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -37,11 +36,13 @@ public class Input {
                     try {
                         values = Arrays.stream(vals).mapToInt(Integer::parseInt).toArray();
                     } catch (Exception e) {
+                        e.printStackTrace();
                         throw new IllegalArgumentException("Error: Invalid N, M, and P Value");
                     }
                     this.n = values[0];    
                     this.m = values[1];    
                     this.p = values[2];   
+                    if (this.p > 26) throw new IllegalArgumentException("Error: Invalid P Value. can't be more than 26");
                     i++;
                 }
                 // get the mode of the board ("DEFAULT", "CUSTOM", "PYRAMID") i aint doin pyramid tho
@@ -108,10 +109,14 @@ public class Input {
                 throw new IllegalArgumentException("Error: Number of piece is not equal to the given value P");
             } 
 
+            if (this.pieces.size() > 26) throw new IllegalArgumentException("Error: Pieces can't be more than 26");
 
             s.close();
-        } catch (FileNotFoundException e) {
+        } catch (IllegalArgumentException e) {
+            throw e; 
+        } catch (Exception e) {
             e.printStackTrace();
+            throw new IllegalArgumentException("Error: Something went wrong. (bruhhh TC nya apa cik)");
         }
     }
 

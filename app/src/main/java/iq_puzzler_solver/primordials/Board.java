@@ -179,7 +179,7 @@ public class Board {
         for (int i = 0; i < this.n; i++) {
             for (int j = 0; j < this.m; j++) {
                 if (this.board[i][j] != 0) {
-                    c = this.colors.get(this.board[i][j]);
+                    c = this.colors.get(this.board[i][j] - 1);
                     System.out.print("\033[38;2;" + c.getRed() + ";" + c.getGreen() + ";" + c.getBlue() + "m");
                     System.out.print(this.pieces.get(this.board[i][j] - 1).symbol);
                 }
@@ -229,8 +229,8 @@ public class Board {
         // fill the board
         for (int i = 0; i < this.n; i++) {
             for (int j = 0; j < this.m; j++) {
-                int x = i * TILE_SIZE + MARGIN;
-                int y = j * TILE_SIZE + 2 * MARGIN;
+                int x = j * TILE_SIZE + MARGIN;
+                int y = i * TILE_SIZE + 2 * MARGIN;
                 if (this.board[i][j] != 0) {
                     g2d.setColor(this.colors.get(this.board[i][j] - 1));
                     g2d.fillRect(x, y, TILE_SIZE, TILE_SIZE);
@@ -242,7 +242,7 @@ public class Board {
             }
         }
 
-        // Draw the board lines
+        // draw the board lines
         g2d.setColor(Color.BLACK);
         for (int i = 0; i <= this.m; i++) {
             g2d.drawLine(i * TILE_SIZE + MARGIN, 2 * MARGIN, i * TILE_SIZE + MARGIN, this.n * TILE_SIZE + 2 * MARGIN);
@@ -251,6 +251,7 @@ public class Board {
             g2d.drawLine(MARGIN, i * TILE_SIZE + 2 * MARGIN, this.m * TILE_SIZE + MARGIN, i * TILE_SIZE + 2 * MARGIN);
         }
 
+        // draw the texts
         String title = "Puzzle Solution";
         int textW1 = g2d.getFontMetrics().stringWidth(title);
         g2d.drawString(title, (w - textW1) / 2, (int) 1.5 * MARGIN);
@@ -271,8 +272,7 @@ public class Board {
         } catch (IOException e) {
             throw new IllegalArgumentException("Error while saving the image: " + e.getMessage());
         } finally {
-            g2d.dispose(); // Clean up the graphics context
+            g2d.dispose();
         }
     }
-
 }
